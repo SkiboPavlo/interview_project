@@ -37,7 +37,7 @@ class PhonesController < ApplicationController
   private
 
   def check_number
-    if @phone.phone_num == ''
+    if @phone.phone_num.blank?
       num = rand(1_111_111_111...9_999_999_999).to_s
       phone = num.slice(0,3) + '-' + num.slice(3..5) + '-' + num.slice(6..10)
       @phone.phone_num = phone unless exist_number?(phone)
